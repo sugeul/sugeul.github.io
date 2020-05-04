@@ -9,7 +9,11 @@ Thus I decide to find a serverless scheduler solution. **It must have at least..
 
   * Scheduling function for every N minutes(/hours/days/ ...)
   * Idempotent running environment
-  * visual tools(maybe, it's not important)
+  
+**some are pleased but not required**
+  * visual tools
+  * SLA /task fail callback
+  * scale out feature
 
 ## candidates
 
@@ -26,5 +30,6 @@ I'd prefer not to use such solution.
  scheduling function | yes | yes | yes
  Idempotent<br/>running environment | no | ? | no
  visual tools | no | no | no
- additional features |
+ SLA/task fail callback |
+ scale out feature |
  
