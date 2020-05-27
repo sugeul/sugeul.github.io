@@ -1,3 +1,9 @@
+---
+title: "ipa 언패킹 가이드"
+date: 2020-05-27 15:26:00 +0900
+categories: ipa-unpacking
+---
+
 ## Disclaimer:
 1. 아래 소개하는 모든 내용은 iPhone app의 bundle/unbundle, encrypt/decrypt 에 대하여 학술적인 목적에서 다루는 글입니다.
 2. 독자의 책임하에 활용해야 하며 이를 활용하는 어떤 동작도 기능을 보장하거나 결과를 책임지지 않습니다.
