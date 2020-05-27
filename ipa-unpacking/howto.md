@@ -98,6 +98,9 @@ categories: ipa-unpacking
     * 아이폰 앱 disassemble 시 그냥 hopper를 쓰면 된다. 호출관계와 pseudo code까지 그려주는 훌륭한 프로그램이다.
 3. 위에서 얻어온 decrypt 된 ipa를 hopper에서 열어주자. free 버전이라도 30분 시간제한을 제외하면 쓰는데 거의 지장 없다.
 4. 여기까지 했다면 이제 정면에 assembly 코드와 좌측에 symbol 리스트를 보고 있을 것이다. 필요한 정보를 찾아보자.
-    
+
+## 난독화
+1. 당연히 이런 해킹을 방지하기 위한 방법 또한 활발히 연구되고 있다.
+2. 관심있다면 읽어보자 [오크(ORK) – 난독화 컴파일러 도구 , Sangmin Chung, 2020.03.06](https://engineering.linecorp.com/ko/blog/code-obfuscation-compiler-tool-ork-1/)
     
     
