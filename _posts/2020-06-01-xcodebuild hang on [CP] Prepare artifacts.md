@@ -24,10 +24,10 @@ First I tried to run xcodebuild with auto-generated options(by Fastlane).
 (I found this line among logs.)
 ```
 [14:52:43]: $ set -o pipefail \
-&& xcodebuild -workspace {{app name}}.xcworkspace -scheme {{scheme}} \
+&& xcodebuild -workspace {app name}.xcworkspace -scheme {scheme} \
 -destination 'generic/platform=iOS' \
--archivePath /Users/{{account name}}/Library/Developer/Xcode/Archives/2020-06-02/{{app name build time}}.xcarchive archive \
-| tee /Users/{{account name}}/Library/Logs/gym/{{scheme}}-{{target}}.log | xcpretty
+-archivePath /Users/{account name}/Library/Developer/Xcode/Archives/2020-06-02/{app name build time}.xcarchive archive \
+| tee /Users/{account name}/Library/Logs/gym/{scheme}-{target}.log | xcpretty
 ```
 
 Of course it won't work!
@@ -35,23 +35,23 @@ But I could get more detailed logs: specifically script names what they call.
 Bottom of logs, I found a suspect script.
 
 ```
-PhaseScriptExecution [CP]\ Check\ Pods\ Manifest.lock /Users/{{account name}}/Library/Developer/Xcode/DerivedData/{{app name}}-exxqzfkyglyqzddfquixpniuhhgt/Build/Intermediates.noindex/ArchiveIntermediates/{{app name}}/IntermediateBuildFilesPath/{{app name}}.build/Release-iphoneos/{{app name}}.build/Script-8BCA08A542D112C1643305D0.sh
-    cd {{project path}}
-    /bin/sh -c /Users/{{account name}}/Library/Developer/Xcode/DerivedData/{{app name}}-exxqzfkyglyqzddfquixpniuhhgt/Build/Intermediates.noindex/ArchiveIntermediates/{{app name}}/IntermediateBuildFilesPath/{{app name}}.build/Release-iphoneos/{{app name}}.build/Script-8BCA08A542D112C1643305D0.sh
+PhaseScriptExecution [CP]\ Check\ Pods\ Manifest.lock /Users/{account name}/Library/Developer/Xcode/DerivedData/{app name}-exxqzfkyglyqzddfquixpniuhhgt/Build/Intermediates.noindex/ArchiveIntermediates/{app name}/IntermediateBuildFilesPath/{app name}.build/Release-iphoneos/{app name}.build/Script-8BCA08A542D112C1643305D0.sh
+    cd {project path}
+    /bin/sh -c /Users/{account name}/Library/Developer/Xcode/DerivedData/{app name}-exxqzfkyglyqzddfquixpniuhhgt/Build/Intermediates.noindex/ArchiveIntermediates/{app name}/IntermediateBuildFilesPath/{app name}.build/Release-iphoneos/{app name}.build/Script-8BCA08A542D112C1643305D0.sh
 
-PhaseScriptExecution [CP]\ Prepare\ Artifacts /Users/{{account name}}/Library/Developer/Xcode/DerivedData/{{app name}}-exxqzfkyglyqzddfquixpniuhhgt/Build/Intermediates.noindex/ArchiveIntermediates/{{app name}}/IntermediateBuildFilesPath/{{app name}}.build/Release-iphoneos/{{app name}}.build/Script-BAF0AFE0439786DEDB034137.sh
-    cd {{project path}}
-    /bin/sh -c /Users/{{account name}}/Library/Developer/Xcode/DerivedData/{{app name}}-exxqzfkyglyqzddfquixpniuhhgt/Build/Intermediates.noindex/ArchiveIntermediates/{{app name}}/IntermediateBuildFilesPath/{{app name}}.build/Release-iphoneos/{{app name}}.build/Script-BAF0AFE0439786DEDB034137.sh
+PhaseScriptExecution [CP]\ Prepare\ Artifacts /Users/{account name}/Library/Developer/Xcode/DerivedData/{app name}-exxqzfkyglyqzddfquixpniuhhgt/Build/Intermediates.noindex/ArchiveIntermediates/{app name}/IntermediateBuildFilesPath/{app name}.build/Release-iphoneos/{app name}.build/Script-BAF0AFE0439786DEDB034137.sh
+    cd {project path}
+    /bin/sh -c /Users/{account name}/Library/Developer/Xcode/DerivedData/{app name}-exxqzfkyglyqzddfquixpniuhhgt/Build/Intermediates.noindex/ArchiveIntermediates/{app name}/IntermediateBuildFilesPath/{app name}.build/Release-iphoneos/{app name}.build/Script-BAF0AFE0439786DEDB034137.sh
 ```
 
 I opened the script:
 ## Script-BAF0AFE0439786DEDB034137.sh
 ```
 #!/bin/sh
-"${PODS_ROOT}/Target Support Files/Pods-{{app name}}/Pods-{{app name}}-artifacts.sh"
+"${PODS_ROOT}/Target Support Files/Pods-{app name}/Pods-{app name}-artifacts.sh"
 ```
 
-We can find `PODS_ROOT` from the logs: (It might be `{{your project's home}}/pods`)
+We can find `PODS_ROOT` from the logs: (It might be `{your project's home}/pods`)
 ```
     export PODS_BUILD_DIR=...
     export PODS_CONFIGURATION_BUILD_DIR=...
@@ -61,7 +61,7 @@ We can find `PODS_ROOT` from the logs: (It might be `{{your project's home}}/pod
 ```
 
 .. and following that:
-## ${PODS_ROOT}/Target Support Files/Pods-{{app name}}/Pods-{{app name}}-artifacts.sh
+## ${PODS_ROOT}/Target Support Files/Pods-{app name}/Pods-{app name}-artifacts.sh
 
 ```
 #!/bin/sh
@@ -223,9 +223,9 @@ I commented out the line, then..
 ## fastlane release
 ```
 [15:41:03]: ▸ total size is 573512  speedup is 1.00
-[15:41:03]: ▸ Artifact list stored at /Users/{{account name}}/Library/Developer/Xcode/DerivedData/{{app name}}-exxqzfkyglyqzddfquixpniuhhgt/Build/Intermediates.noindex/ArchiveIntermediates/{{app name}}/BuildProductsPath/Release-iphoneos/cocoapods-artifacts-Release.txt
-[15:41:03]: ▸ cat: /Users/{{account name}}/Library/Developer/Xcode/DerivedData/{{app name}}-exxqzfkyglyqzddfquixpniuhhgt/Build/Intermediates.noindex/ArchiveIntermediates/{{app name}}/BuildProductsPath/Release-iphoneos/cocoapods-artifacts-Release.txt: No such file or directory
-[15:41:03]: ▸ /Users/{{account name}}/Vlogr2/Vlogr/Pods/Target Support Files/Pods-{{app name}}/Pods-{{app name}}-artifacts.sh: line 7: realpath: command not found
+[15:41:03]: ▸ Artifact list stored at /Users/{account name}/Library/Developer/Xcode/DerivedData/{app name}-exxqzfkyglyqzddfquixpniuhhgt/Build/Intermediates.noindex/ArchiveIntermediates/{app name}/BuildProductsPath/Release-iphoneos/cocoapods-artifacts-Release.txt
+[15:41:03]: ▸ cat: /Users/{account name}/Library/Developer/Xcode/DerivedData/{app name}-exxqzfkyglyqzddfquixpniuhhgt/Build/Intermediates.noindex/ArchiveIntermediates/{app name}/BuildProductsPath/Release-iphoneos/cocoapods-artifacts-Release.txt: No such file or directory
+[15:41:03]: ▸ /Users/{account name}/Vlogr2/Vlogr/Pods/Target Support Files/Pods-{app name}/Pods-{app name}-artifacts.sh: line 7: realpath: command not found
 [15:41:03]: ▸ :227: error: Unexpected failure
 ```
 
@@ -241,9 +241,9 @@ As the log, we need the file(even it is empty). so I changed cat >` with `touch`
 [15:46:03]: ▸ Running script '[CP] Embed Pods Frameworks'
 [15:46:04]: ▸ Copying .../*.framework
 [15:46:04]: ▸ Signing .../*.framework
-[15:46:04]: ▸ Touching {{app name}}.app
-[15:46:06]: ▸ Signing .../{{app name}}.app
-[15:46:11]: ▸ Touching {{app name}}.app.dSYM
+[15:46:04]: ▸ Touching {app name}.app
+[15:46:06]: ▸ Signing .../{app name}.app
+[15:46:11]: ▸ Touching {app name}.app.dSYM
 [15:46:11]: ▸ Archive Succeeded
 ```
 
