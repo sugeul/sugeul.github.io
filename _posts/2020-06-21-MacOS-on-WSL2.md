@@ -24,11 +24,12 @@ This instruction is only care how to install MacOS on WSL2, but not whether you 
 If you are not, then you update your Windows and come back here.
 2. Then You can enable Windows Subsystem Linux at `Control` - `Apps` - `Programs and Features` - `Turn Windows features on or off`.
 ![image](https://user-images.githubusercontent.com/769432/85217426-dd415200-b3cb-11ea-909b-eac868c8c639.png)
-3. Then go to Microsoft Store. Install `Ubuntu`.
+3. I have not enough idea that you will need Hyper-V feature for this work, but if you can, please enable Hyper-V and virtualization feature.
+4. Then go to Microsoft Store. Install `Ubuntu`.
 (If you don't want to use Ubuntu, then you can try any other linux. maybe.. :) )
-4. Sure you should set your Linux. Just follow instruction by starting `Ubuntu` app.
+5. Sure you should set your Linux. Just follow instruction by starting `Ubuntu` app.
 At this moment you have the WSL but not WSL2.
-5. After all, upgrade WSL to version 2. This official instruction is kind and easy enough.
+6. After all, upgrade WSL to version 2. This official instruction is kind and easy enough.
 https://docs.microsoft.com/en-us/windows/wsl/install-win10
 
 ```PowerShell
