@@ -162,6 +162,9 @@ $ qemu-img create -f qcow2 macOS.qcow2 60G # you may need enough disk size for s
 -drive id=SystemDisk,if=none,file=macOS.qcow2 \
 -device ide-hd,bus=sata.4,drive=SystemDisk \
 ```
+5. You will need to format disk, install macOS from internet, and setting your preferences with 'Clover'.
+Details are described at the origin instruction.
+
 # launch
 1. when you run `.basic.sh`, you will see a window is opening via vcXsrv!
 2. you may take 2 or more hours to install Catallina on your VM, after that, you are free to use MacOS VM.
