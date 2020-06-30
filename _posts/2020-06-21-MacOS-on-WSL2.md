@@ -45,7 +45,7 @@ PS C:\WINDOWS\system32> wsl --set-version Ubuntu 2
 WSL 2와의 주요 차이점에 대한 자세한 내용은 https://aka.ms/wsl2를 참조하세요
 ```
 
-Congrats, you have WSL2 now! but it is just fist step.
+Congrats, you have WSL2 now! but it is just first step.
 
 # Enable KVM
 1. You may think it was dizzy work to set WSL2, but it is absolutely clear than this step. So, take a deep breath before start.
