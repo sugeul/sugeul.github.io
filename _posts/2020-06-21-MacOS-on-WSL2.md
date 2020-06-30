@@ -118,7 +118,7 @@ now you can try below again!
 ```bash
 $ uname -ar
 Linux DESKTOP-E5KKPEB 4.19.104-microsoft-standard #1 SMP Sat Jun 20 14:08:58 KST 2020 x86_64 x86_64 x86_64 GNU/Linux
-$ grep "(svm|vmx)" /proc/cpuinfo
+$ egrep -c "(svm|vmx)" /proc/cpuinfo
 8
 ```
 
