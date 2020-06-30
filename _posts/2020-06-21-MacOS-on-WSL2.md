@@ -30,7 +30,7 @@ If you are not, then you update your Windows and come back here.
 5. Sure you should set your Linux. Just follow instruction by starting `Ubuntu` app.
 At this moment you have the WSL but not WSL2.
 6. After all, upgrade WSL to version 2. This official instruction is kind and easy enough.
-https://docs.microsoft.com/en-us/windows/wsl/install-win10
+[https://docs.microsoft.com/en-us/windows/wsl/install-win10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 
 ```PowerShell
 PS C:\WINDOWS\system32> dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
@@ -50,7 +50,7 @@ Congrats, you have WSL2 now! but it is just fist step.
 # Enable KVM
 1. You may think it was dizzy work to set WSL2, but it is absolutely clear than this step. So, take a deep breath before start.
 2. First you should get WSL2 Kernel codes. It is preferred to have code of released version. (I am using 4.19.104)
-https://github.com/microsoft/WSL2-Linux-Kernel
+[https://github.com/microsoft/WSL2-Linux-Kernel](https://github.com/microsoft/WSL2-Linux-Kernel)
 3. Before clone or unzip the code, you may need to set `per-directory case sensitivity`.
 Its quite hassle but if you skip this, you will fail to build after all!
 ```
@@ -111,7 +111,7 @@ $ egrep -c "(svm|vmx)" /proc/cpuinfo
 13. If you are not, you can go to next step. Otherwise follow below steps.
 14. You need `WinDbg Preview` in Microsoft store.
 ![image](https://user-images.githubusercontent.com/769432/85217969-da952b80-b3d0-11ea-8d98-5ca9a89be0db.png)
-15. Get script from here: https://gist.github.com/steffengy/62a0b5baa124830a4b0fe4334ccc2606 (Thank you Steffengy!)
+15. Get script from here: [https://gist.github.com/steffengy/62a0b5baa124830a4b0fe4334ccc2606](https://gist.github.com/steffengy/62a0b5baa124830a4b0fe4334ccc2606) (Thank you Steffengy!)
 get `run-wsl.bat` and `script.js` at same directory.
 16. If you launch `run-wsl.bat`: then you will see WinDbg window and the WSL terminal after few seconds.
 now you can try below again!
@@ -124,7 +124,7 @@ $ grep "(svm|vmx)" /proc/cpuinfo
 
 # set QEMU VM
 1. You are using Windows as host, thus you may need to install X server on your Windows.
-2. I installed vcXsrv by following this instruction. https://blog.nadekon.net/115
+2. I installed vcXsrv by following this instruction. [https://blog.nadekon.net/115(Korean)](https://blog.nadekon.net/115)
 3. It is preferred to add below line in your `.bashrc`.
 ```
 VETHER_IP=$(/usr/bin/grep nameserver /etc/resolv.conf 2> /dev/null | /usr/bin/tr -s ' ' | /usr/bin/cut -d' ' -f2)
@@ -143,7 +143,7 @@ KVM acceleration can be used(svm|vmx)
 ```
 
 # create [macOS-Simple-KVM](https://github.com/foxlet/macOS-Simple-KVM.git) on QEMU
-0. this steps are from https://computingforgeeks.com/how-to-run-macos-on-kvm-qemu/ . some are changed but note reference.
+0. this steps are from [https://computingforgeeks.com/how-to-run-macos-on-kvm-qemu/](https://computingforgeeks.com/how-to-run-macos-on-kvm-qemu/) . some are changed but note reference.
 1. Let's install requirements and code.
 ```bash
 $ sudo apt -y install qemu-kvm libvirt-daemon qemu-system qemu-utils python3 python3-pip bridge-utils virtinst libvirt-daemon-system virt-manager
@@ -174,10 +174,10 @@ Details are described at the origin instruction.
 <img width="1920" alt="screenshot-macOS vm" src="https://user-images.githubusercontent.com/769432/85218275-b9820a00-b3d3-11ea-873d-32b5f47163fb.png">
 
 # References
-1. https://docs.microsoft.com/en-us/windows/wsl/install-win10
-2. https://github.com/microsoft/WSL2-Linux-Kernel
-3. https://boxofcables.dev/accelerated-kvm-guests-on-wsl-2/
-4. https://gist.github.com/steffengy/62a0b5baa124830a4b0fe4334ccc2606
-5. https://blog.nadekon.net/115
-6. https://computingforgeeks.com/how-to-run-macos-on-kvm-qemu/=
-7. https://wiki.gentoo.org/wiki/QEMU/Options
+1. [https://docs.microsoft.com/en-us/windows/wsl/install-win10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
+2. [https://github.com/microsoft/WSL2-Linux-Kernel](https://github.com/microsoft/WSL2-Linux-Kernel)
+3. [https://boxofcables.dev/accelerated-kvm-guests-on-wsl-2/](https://boxofcables.dev/accelerated-kvm-guests-on-wsl-2/)
+4. [https://gist.github.com/steffengy/62a0b5baa124830a4b0fe4334ccc2606](https://gist.github.com/steffengy/62a0b5baa124830a4b0fe4334ccc2606)
+5. [https://blog.nadekon.net/115](https://blog.nadekon.net/115)
+6. [https://computingforgeeks.com/how-to-run-macos-on-kvm-qemu/](https://computingforgeeks.com/how-to-run-macos-on-kvm-qemu/)
+7. [https://wiki.gentoo.org/wiki/QEMU/Options](https://wiki.gentoo.org/wiki/QEMU/Options)
