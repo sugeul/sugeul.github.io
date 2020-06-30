@@ -229,7 +229,7 @@ I commented out the line, then..
 [15:41:03]: ▸ :227: error: Unexpected failure
 ```
 
-As the log, we need the file(even it is empty). so I changed cat >` with `touch`. then..
+As the log, we need the file(even it is empty). so I changed `cat >` with `touch`. then..
 
 ## fastlane release
 
