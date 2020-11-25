@@ -67,10 +67,10 @@ $ cd WSL2-Linux-Kernel-4.19.104-microsoft-standard/
 
 $ cp Microsoft/config-wsl .config
 $ make menuconfig
+```
 
 Because he captured many screenshots about this, it is better to follow original blog's instruction in this stage.
 
-```
 6. should check `.config` after setting, you should have followings.
 ```bash
 KVM_GUEST=y
